@@ -1,0 +1,24 @@
+# For the full facil.yaml reference, see:
+# https://github.com/cmeeren/Facil/blob/master/facil_reference.yaml
+
+# Allows you to use a $(Variable) in connectionString below (you can use appsettings.json
+# and user secrets too, see the full reference linked to above for details)
+configs:
+  - envVars: ""
+
+rulesets:
+  - connectionString: Server=localhost; Database=Test; Trusted_Connection=true; TrustServerCertificate=True
+    
+    # The filename and namespace/module declaration of the generated file. The values
+    # below are the defaults. You can remove them if you're happy with them.
+    filename: DbGen.fs
+    namespaceOrModuleDeclaration: module DbGen
+    scriptBasePath: sql
+    
+    scripts:
+      # Generate wrappers for all stored procedures with the default configuration.
+      - include: "*.sql"
+        result: nominal
+        
+        tempTables:          
+          - definition: CreateTable/CreateTempTable.sql

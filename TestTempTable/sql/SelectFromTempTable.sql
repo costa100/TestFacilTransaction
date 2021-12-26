@@ -1,0 +1,1 @@
+select id, description from #TempTable
