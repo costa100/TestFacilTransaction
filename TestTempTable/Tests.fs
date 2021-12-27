@@ -49,7 +49,8 @@ let ``Handling temp tables within a sql transaction should work`` () =
                 .WithParameters(rows)
                 .Execute()
     
-        result.ToArray() |> Array.iter (printfn "%A")
+        //result.ToArray() |> Array.iter (printfn "%A")
+        ()
     
     executeWithinTransaction action
     
